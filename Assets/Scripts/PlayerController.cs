@@ -10,11 +10,12 @@ public class PlayerController : MonoBehaviour
     //private float verticalInput;
     //public float advancespeed = 10f;
     public float xRange = 17f;
+    public GameObject municionprefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instantiate(municionprefab, transform.position, municionprefab.transform.rotation);
     }
 
     // Update is called once per frame
@@ -34,5 +35,10 @@ public class PlayerController : MonoBehaviour
         }
         //verticalInput = Input.GetAxis("Vertical");
         //transform.Translate(Vector3.forward * advancespeed * Time.deltaTime * verticalInput);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(municionprefab, transform.position, municionprefab.transform.rotation);
+        }
     }
 }
+   
