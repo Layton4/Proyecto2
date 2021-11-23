@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawn_Manager : MonoBehaviour
 
 
 {
-    public GameObject animalPrefab;
+    public GameObject[] animalPrefabs;
     public Vector3 spawnPosition = new Vector3(0, 0, 25);
     private float XRange = 17f;
-
-    // Start is called before the first frame update
+   
+    
     void Start()
     {
         InvokeRepeating("SpawmAnimal", 3, 0.5f);
@@ -24,10 +25,11 @@ public class Spawn_Manager : MonoBehaviour
         return new Vector3(randoX, 0, 25);
     }
 
-    public void SpawmAnimal()
+   public void SpawmAnimal()
     {
+        int animal = Random.Range(0, animalPrefabs.Length);
         spawnPosition = RandomSpawnPosition();
-        Instantiate(animalPrefab, spawnPosition, animalPrefab.transform.rotation);
+        Instantiate(animalPrefabs[animal], spawnPosition, animalPrefabs[animal].transform.rotation);
     }
 
 }
